@@ -4,7 +4,7 @@ volumes:
 
 services:
   db:
-    image: arm64v8/postgres:13
+    image: postgres:13
     ports:
       - "15432:5432"
     container_name: pgschemas_db
@@ -21,7 +21,7 @@ services:
       - db
     build: 
       context: .
-      dockerfile: Dockerfile.arm64
+      dockerfile: Dockerfile
     ports:
       - "10000:8000"
     volumes:

@@ -1,11 +1,11 @@
-FROM arm64v8/python:3.10-bullseye as python_packages
+FROM python:3.10-bullseye as python_packages
 MAINTAINER blorenz@gmail.com
 RUN mkdir /svc
 WORKDIR /svc
 COPY requirements/requirements.txt .
 RUN pip wheel -r requirements.txt --wheel-dir=/svc/wheels
 
-FROM arm64v8/python:3.10-bullseye
+FROM python:3.10-bullseye
 
 COPY --from=python_packages /svc /svc
 WORKDIR /svc
