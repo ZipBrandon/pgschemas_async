@@ -5,7 +5,8 @@ dev:
 	python manage.py migrate
 	/usr/local/bin/python manage.py collectstatic --noinput
 	python manage.py bootstrap_data
-	python manage.py createsuperuser --noinput
+
+	python manage.py createsuperuser --noinput > /dev/null & # We don't care about this result as it will only run successfully the first time
 	python manage.py runserver 0.0.0.0:8000
 
 tail:

@@ -1,21 +1,15 @@
+import logging
 from dataclasses import dataclass
 from typing import Optional, TYPE_CHECKING
 
-from channels.db import database_sync_to_async
 from strawberry.channels.handlers.base import ChannelsConsumer
 from strawberry.channels.handlers.http_handler import (
     GraphQLHTTPConsumer,
     SyncGraphQLHTTPConsumer,
 )
 from strawberry.channels.handlers.ws_handler import GraphQLWSConsumer
-from strawberry.http import (
-    GraphQLHTTPResponse,
-    GraphQLRequestData,
-    process_result,
-)
-from strawberry.types import ExecutionResult
-from strawberry.types.graphql import OperationType
 
+LOGGER = logging.getLogger("django")
 
 if TYPE_CHECKING:
     from strawberry.channels.handlers.base import ChannelsConsumer
@@ -60,7 +54,6 @@ class MyGraphQLHTTPConsumer(GraphQLHTTPConsumer):
         self.host = self.scope.get("host")
         self.http_host = self.scope.get("http_host")
         self.session = self.scope.get("session")
-
         return await self.process_models(request)
 
 

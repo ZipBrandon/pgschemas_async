@@ -1,0 +1,12 @@
+{
+  getClient {
+    id
+    name
+    currentSchema
+  }
+  getClientSync {
+    id
+    name
+    currentSchema
+  }
+}
